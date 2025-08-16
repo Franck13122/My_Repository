@@ -1,0 +1,69 @@
+
+<svg viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shader and RT core handshake for multiple bounces">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#9fe2ff"/>
+    </marker>
+    <style><![CDATA[
+      .b{fill:rgba(255,255,255,0.06);stroke:#7cd2ff;stroke-opacity:.6;stroke-width:2}
+      .t{font:700 14px ui-sans-serif,system-ui;fill:#e6e8ef}
+      .s{font:12px ui-sans-serif,system-ui;fill:#cdd5f0}
+      .a{stroke:#9fe2ff;stroke-width:3;marker-end:url(#arr)}
+      .thin{stroke:#6fbef0;stroke-dasharray:6 6}
+    ]]></style>
+  </defs>
+
+  <g transform="translate(40,30)">
+    <rect class="b" x="0" y="0" width="320" height="100" rx="12"/>
+    <text class="t" x="12" y="26">Ray Generation Shader</text>
+    <text class="s" x="12" y="50">Launch primary ray → TraceRay()</text>
+  </g>
+
+  <g transform="translate(420,30)">
+    <rect class="b" x="0" y="0" width="320" height="100" rx="12"/>
+    <text class="t" x="12" y="26">RT Core Traversal</text>
+    <text class="s" x="12" y="50">BVH walk, ray–triangle tests</text>
+  </g>
+
+  <g transform="translate(800,30)">
+    <rect class="b" x="0" y="0" width="260" height="100" rx="12"/>
+    <text class="t" x="12" y="26">Hit/Miss Dispatch</text>
+    <text class="s" x="12" y="50">Closest-hit or Miss shader</text>
+  </g>
+
+  <g transform="translate(40,200)">
+    <rect class="b" x="0" y="0" width="320" height="120" rx="12"/>
+    <text class="t" x="12" y="26">Closest-Hit Shader</text>
+    <text class="s" x="12" y="50">Compute BRDF, reflection vector</text>
+    <text class="s" x="12" y="70">Optionally spawn new rays → TraceRay()</text>
+  </g>
+
+  <g transform="translate(420,200)">
+    <rect class="b" x="0" y="0" width="320" height="120" rx="12"/>
+    <text class="t" x="12" y="26">RT Core Traversal (Bounce 1)</text>
+    <text class="s" x="12" y="50">Returns next hit/miss</text>
+  </g>
+
+  <g transform="translate(800,200)">
+    <rect class="b" x="0" y="0" width="260" height="120" rx="12"/>
+    <text class="t" x="12" y="26">Hit/Miss Dispatch</text>
+    <text class="s" x="12" y="50">Closest-hit / Miss / Any-hit</text>
+  </g>
+
+  <g transform="translate(40,380)">
+    <rect class="b" x="0" y="0" width="1020" height="130" rx="12"/>
+    <text class="t" x="12" y="26">Wavefront/Queue Model</text>
+    <text class="s" x="12" y="50">Large numbers of rays are bucketed by stage (gen, traverse, shade)</text>
+    <text class="s" x="12" y="70">Scheduler groups similar work for cache and warp coherence</text>
+  </g>
+
+  <!-- arrows -->
+  <line class="a" x1="360" y1="80" x2="420" y2="80"/>
+  <line class="a" x1="740" y1="80" x2="800" y2="80"/>
+  <line class="a" x1="1060" y1="80" x2="1060" y2="200"/>
+  <line class="a" x1="1060" y1="200" x2="420" y2="200"/>
+
+  <line class="a" x1="360" y1="260" x2="420" y2="260"/>
+  <line class="a" x1="740" y1="260" x2="800" y2="260"/>
+  <line class="thin" x1="930" y1="320" x2="930" y2="380"/>
+</svg>
